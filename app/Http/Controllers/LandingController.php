@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class LandingController extends Controller
 {
     public function index()
     {
@@ -100,6 +100,7 @@ class ProductController extends Controller
                 "rating" => 5
             ]
         ];
-        return view('product.index', ['data' => $products]);
+
+        return view('landing', compact('products'));
     }
 }

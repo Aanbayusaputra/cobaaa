@@ -20,7 +20,21 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($data as $product)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $product['category'] }}</td>
+                                    <td>{{ $product['name'] }}</td>
+                                    <td>{{ $product['price'] }}</td>
+                                    <td>{{ $product['sale_price'] }}</td>
+                                    <td>{{ $product['brands'] }}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning">Read</a>
+                                        <a href="#" class="btn btn-warning">Edit</a>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

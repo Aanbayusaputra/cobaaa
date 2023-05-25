@@ -16,7 +16,16 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($data as $category)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $category['name'] }}</td>
+                                    <td>
+                                        <a href="#" class="btn btn-warning">Edit</a>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
