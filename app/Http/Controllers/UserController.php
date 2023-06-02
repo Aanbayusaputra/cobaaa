@@ -49,7 +49,7 @@ class UserController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'role_id' => $request->role,
-            'password' => bcrypt('password') // default password, sementara di hardcode
+            'password' => bcrypt('password') // default password
         ]);
 
         // Redirect ke halaman user.index

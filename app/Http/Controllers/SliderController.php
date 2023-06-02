@@ -25,7 +25,7 @@ class SliderController extends Controller
 
     public function store(Request $request)
     {
-        // ubah nama file gambar dengan angka random
+        // mengubah nama file gambar dengan angka random
         $imageName = time() . '.' . $request->image->extension();
 
         // upload file gambar ke folder slider
@@ -38,7 +38,7 @@ class SliderController extends Controller
             'image' => $imageName,
         ]);
 
-        // alihkan halaman ke halaman slider.index
+        // mengalihkan halaman ke halaman slider.index
         return redirect()->route('slider.index');
     }
 

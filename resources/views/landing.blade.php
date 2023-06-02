@@ -31,11 +31,9 @@
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#!">Cell Phones</a></li>
-                            <li><a class="dropdown-item" href="#!">Wearable</a></li>
-                            <li><a class="dropdown-item" href="#!">Tablet</a></li>
-                            <li><a class="dropdown-item" href="#!">Laptop</a></li>
-                            <li><a class="dropdown-item" href="#!">Accessories</a></li>
+                            @foreach ($categories as $category)
+                                <li><a class="dropdown-item" href="#!">{{ $category->name }}</a></li>
+                            @endforeach
                         </ul>
                     </li>
                 </ul>
@@ -64,27 +62,16 @@
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="3000">
-                <img src="https://picsum.photos/1000/300.webp?random=1" class="d-block w-100" alt="Gambar1">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>First slide label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
+            @foreach ($sliders as $slider)
+                <div class="carousel-item {{ $loop->first ? 'active' : '' }}" data-bs-interval="3000">
+                    <img src="{{ asset('storage/slider/' . $slider->image) }}" class="d-block w-100"
+                        alt="{{ $slider->image }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{ $slider->title }}</h5>
+                        <p>{{ $slider->caption }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="3000">
-                <img src="https://picsum.photos/1000/300.webp?random=2" class="d-block w-100" alt="Gambar2">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item" data-bs-interval="3000">
-                <img src="https://picsum.photos/1000/300.webp?random=3" class="d-block w-100" alt="Gambar3">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
-                </div>
-            </div>
+            @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
             data-bs-slide="prev">
@@ -107,34 +94,34 @@
                         <div class="card h-100">
                             @if ($product['sale_price'] != 0)
                                 <!-- Sale badge-->
-                                <div class="badge bg-dark text-white position-absolute"
+                                <div class="badge bg-success text-white position-absolute"
                                     style="top: 0.5rem; right: 0.5rem">Sale</div>
                             @endif
 
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
+                            <img class="card-img-top" src="{{ asset('storage/product/' . $product->image) }}"
+                                alt="{{ $product->image }}" />
 
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <a href="#" style="text-decoration: none" class="text-dark">
-                                        <h5 class="fw-bolder">{{ $product['name'] }}</h5>
+                                        <h5 class="fw-bolder">{{ $product->name }}</h5>
                                     </a>
                                     <!-- Product reviews-->
                                     <div class="d-flex justify-content-center small text-warning mb-2">
-                                        @for ($i = 0; $i < $product['rating']; $i++)
+                                        @for ($i = 0; $i < $product->rating; $i++)
                                             <div class="bi-star-fill"></div>
                                         @endfor
                                     </div>
                                     <!-- Product price-->
                                     @if ($product['sale_price'] != 0)
                                         <span
-                                            class="text-muted text-decoration-line-through">Rp.{{ number_format($product['price'], 0) }}</span>
-                                        Rp.{{ number_format($product['sale_price'], 0) }}
+                                            class="text-muted text-decoration-line-through">Rp.{{ number_format($product->price, 0) }}</span>
+                                        Rp.{{ number_format($product->sale_price, 0) }}
                                     @else
-                                        Rp.{{ number_format($product['price'], 0) }}
+                                        Rp.{{ number_format($product->price, 0) }}
                                     @endif
                                 </div>
                             </div>
