@@ -36,6 +36,10 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login.aut
 
 
 Route::middleware('auth')->group(function () {
+
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
     //dasboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -48,6 +52,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/user/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+
+    //role
+    Route::get('/role', [RoleController::class, 'index'])->name('role.index');
+    Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
+    Route::post('/role', [RoleController::class, 'store'])->name('role.store');
+    Route::delete('/role/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
+    Route::put('/role/{id}', [RoleController::class, 'update'])->name('role.update');
+    Route::get('/role/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
 
     //kategori
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
@@ -66,14 +78,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
     Route::delete('/product/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::put('/product/{id}', [ProductController::class, 'update'])->name('product.update');
-
-    //role
-    Route::get('/role', [RoleController::class, 'index'])->name('role.index');
-    Route::get('/role/create', [RoleController::class, 'create'])->name('role.create');
-    Route::post('/role', [RoleController::class, 'store'])->name('role.store');
-    Route::delete('/role/{id}', [RoleController::class, 'destroy'])->name('role.destroy');
-    Route::put('/role/{id}', [RoleController::class, 'update'])->name('role.update');
-    Route::get('/role/edit/{id}', [RoleController::class, 'edit'])->name('role.edit');
 
     // Slider
     Route::get('/slider', [SliderController::class, 'index'])->name('slider.index'); // route untuk menampilkan data awal

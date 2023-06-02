@@ -12,9 +12,10 @@ class LoginController extends Controller
 {
     public function index()
     {
-        if (auth()) {
-            return redirect()->route('dashboard');
-        }
+
+        // if (Auth::check()) {
+        //     return redirect()->route('dashboard');
+        // }
 
         return view('auth.login');
     }
@@ -33,9 +34,7 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         }
 
-        // return back()->withErrors([
-        //     'email' => 'The provided credentials do not match our records.',
-        // ])->onlyInput('email');
+
 
         return redirect()->back()->with('error', 'Email atau password salah');
     }

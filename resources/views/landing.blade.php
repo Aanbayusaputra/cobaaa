@@ -19,7 +19,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">Start Bootstrap</a>
+            <a class="navbar-brand" href="#!">My Store</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -43,10 +43,19 @@
                         Cart
                         <span class="badge bg-light text-dark ms-1 rounded-pill">0</span>
                     </a>
-                    <a href="{{ route('dashboard') }}" class="btn btn-outline-light ms-1">
-                        <i class="bi-person-fill me-1"></i>
-                        Login
-                    </a>
+                    @auth
+                        <a href="{{ route('dashboard') }}" class="btn btn-outline-light ms-1">
+                            <i class="bi-person-fill me-1"></i>
+                            Dashboard
+                        </a>
+                    @endauth
+
+                    @guest
+                        <a href="{{ route('login') }}" class="btn btn-outline-light ms-1">
+                            <i class="bi-person-fill me-1"></i>
+                            Login
+                        </a>
+                    @endguest
                 </form>
             </div>
         </div>

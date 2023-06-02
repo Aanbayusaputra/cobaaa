@@ -45,7 +45,7 @@
 
                 @if (Session::get('error'))
                     <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                        <strong>Oops!</strong> {{ $massage }}
+                        <strong>Oops!</strong> Email atau Password Salah!
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
@@ -53,7 +53,9 @@
                 <div class="card border-0 shadow rounded-3 mb-5 mt-2">
                     <div class="card-body p-4 p-sm-5">
                         <h5 class="card-title text-center mb-5 fw-light fs-5">Sign In</h5>
-                        <form>
+
+                        <form action="{{ route('login.authenticate') }}" method="POST">
+                            @csrf
 
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput" name="email"
