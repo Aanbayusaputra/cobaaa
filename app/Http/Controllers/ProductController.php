@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -34,6 +35,19 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'category' => 'required',
+            'name' => 'required|string|min:3',
+            'price' => 'required|integer',
+            'sale_price' => 'required|integer',
+            'brand' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
         //mengubbah nama file
         $imageName = time() . '.' . $request->image->extension();
 
@@ -46,7 +60,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'sale_price' => $request->sale_price,
-            'brands' => $request->brand,
+            'brand' => $request->brand,
             'image' => $imageName
         ]);
 
@@ -55,6 +69,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+
         // ambil data product berdasarkan id
         $product = Product::where('id', $id)->with('category')->first();
 
@@ -68,6 +83,14 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validator = Validator::make($request->all(), [
+            'category' => 'required',
+            'name' => 'required|string|min:3',
+            'price' => 'required|integer',
+            'sale_price' => 'required|integer',
+            'brand' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
 
         // cek jika user mengupload gambar di form
         if ($request->hasFile('image')) {
