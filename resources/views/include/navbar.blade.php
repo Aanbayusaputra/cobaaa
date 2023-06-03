@@ -8,10 +8,12 @@
             <li>
                 <hr class="dropdown-divider" />
             </li>
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="dropdown-item">Logout</button>
-            </form>
+            <li>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+            </li>
         </ul>
     </li>
 </ul>

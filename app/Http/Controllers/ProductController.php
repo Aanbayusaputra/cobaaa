@@ -6,6 +6,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -14,7 +15,13 @@ class ProductController extends Controller
     {
         $products = Product::with('category')->get();
 
-        return view('product.index', ['products' => $products]);
+        if (Auth::user()->role->name == 'User') {
+
+            return view('product.card', ['products' => $products]);
+        } else {
+
+            return view('product.index', ['products' => $products]);
+        }
     }
 
     public function create()
