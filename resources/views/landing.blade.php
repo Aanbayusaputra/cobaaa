@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Homepage - Start Bootstrap Template</title>
+    <title>Homepage - Toko Sepatu</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
@@ -25,14 +25,17 @@
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page"
+                            href="{{ route('landing') }}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach ($categories as $category)
-                                <li><a class="dropdown-item" href="#!">{{ $category->name }}</a></li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('landing', ['category' => $category->name]) }}">{{ $category->name }}</a>
+                                </li>
                             @endforeach
                         </ul>
                     </li>
@@ -96,6 +99,22 @@
     <!-- Section-->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
+            <form action="{{ route('landing') }}" method="GET">
+                @csrf
+                <div class="row g-3 my-5">
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="Min" name="min"
+                            value="{{ old('min') }}">
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" placeholder="Max" name="max"
+                            value={{ old('max') }}>
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="submit" class="btn btn-primary">Cari</button>
+                    </div>
+                </div>
+            </form>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 
                 @foreach ($products as $product)
@@ -116,7 +135,9 @@
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <a href="#" style="text-decoration: none" class="text-dark">
+                                        <small class="text-strong">{{ $product->category->name }}</small>
                                         <h5 class="fw-bolder">{{ $product->name }}</h5>
+
                                     </a>
                                     <!-- Product reviews-->
                                     <div class="d-flex justify-content-center small text-warning mb-2">
@@ -146,11 +167,35 @@
         </div>
     </section>
     <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
+    <footer class="py-5 bg-dark" id="about">
+        <div class="container text-light">
+            <div class="row">
+                <div class="col-6 px-4">
+                    <h2 class="logo-brand"><span>My</span><span class="text-warning">Store</span></h2>
+                    <p>My Store Merupakan Toko Sepatu Terlangkap dari Yang Termurah Dan Termahal dijamin Original</p>
+                </div>
+                <div class="col-6 px-4">
+                    <p><i class="fa-solid fa-location-dot icon mx-3 ms-0"></i>Desa Glonggong, Kecamatan Wanasari,
+                        Brebes,
+                        Jawa Tengah</p>
+                    <small>Developed by</small>
+                    <br>
+                    <small>Aan Bayu Saputra</small>
+                    <br>
+                    <a class="icon" href="https://web.facebook.com/aanbayu.saputra.96"><i
+                            class="fa fa-facebook"></i></a>
+                    <a class="icon" href="#!"><i class="fa fa-linkedin"></i></a>
+                    <a class="icon" href="#!"><i class="fa fa-github"></i></a>
+                    <a class="icon" href="#!"><i class="fa fa-gitlab"></i></a>
+                    <a class="icon" href="#!"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center"> &copy 2023 Aan Bayu Saputra| FSWD 2</p>
         </div>
     </footer>
+    <!-- End Footer-->
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
