@@ -61,7 +61,8 @@ class ProductController extends Controller
             'price' => $request->price,
             'sale_price' => $request->sale_price,
             'brand' => $request->brand,
-            'image' => $imageName
+            'image' => $imageName,
+            'status' => 'pending' // status awal adalah pending
         ]);
 
         return redirect()->route('product.index');
@@ -113,7 +114,8 @@ class ProductController extends Controller
                 'price' => $request->price,
                 'sale_price' => $request->sale_price,
                 'brands' => $request->brand,
-                'image' => $imageName
+                'image' => $imageName,
+                'status' => 'pending' // update status menjadi pending jika ada perubahan pada produk
 
             ]);
         } else {
@@ -124,12 +126,31 @@ class ProductController extends Controller
                 'price' => $request->price,
                 'sale_price' => $request->sale_price,
                 'brands' => $request->brand,
+                'status' => 'pending' // update status menjadi pending jika ada perubahan pada produk
             ]);
         }
 
         // redirect ke halaman product.index
         return redirect()->route('product.index');
     }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'status' => 'required|in:approved,rejected'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors())->withInput();
+        }
+
+        $product = Product::findOrFail($id);
+        $product->status = $request->status;
+        $product->save();
+
+        return redirect()->route('product.index');
+    }
+
 
     public function destroy($id)
     {

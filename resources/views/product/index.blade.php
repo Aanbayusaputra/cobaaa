@@ -19,6 +19,7 @@
                                 <th>Sale Price</th>
                                 <th>Brand</th>
                                 <th>Image</th>
+                                <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -30,7 +31,7 @@
                                     <td>{{ $product->name }}</td>
                                     <td>Rp. {{ number_format($product->price, 0, 2) }}</td>
                                     <td>Rp. {{ number_format($product->sale_price, 0, 2) }}</td>
-                                    <td>{{ $product->brands }}</td>
+                                    <td>{{ $product->brand }}</td>
                                     <td>
                                         @if ($product->image == null)
                                             <span class="badge bg-primary">No Image</span>
@@ -38,11 +39,33 @@
                                             <img src="{{ asset('storage/product/' . $product->image) }}"
                                                 alt="{{ $product->name }}" style="max-width: 50px">
                                         @endif
-
                                     </td>
-
                                     <td>
-                                        <form onsubmit="return confirm('Are you sure? ');"
+                                        @if ($product->status == 'approved')
+                                            <span class="badge bg-success">Approved</span>
+                                        @elseif ($product->status == 'rejected')
+                                            <span class="badge bg-danger">Rejected</span>
+                                        @else
+                                            <form action="{{ route('product.updateStatus', $product->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="status" value="approved">
+                                                <button type="submit" class="btn btn-sm btn-success"><i
+                                                        class="fas fa-check"></i></button>
+                                            </form>
+                                            <form action="{{ route('product.updateStatus', $product->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="status" value="rejected">
+                                                <button type="submit" class="btn btn-sm btn-danger"><i
+                                                        class="fas fa-times"></i></button>
+                                            </form>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <form onsubmit="return confirm('Are you sure?');"
                                             action="{{ route('product.destroy', $product->id) }}" method="POST">
                                             <a href="{{ route('product.edit', $product->id) }}"
                                                 class="btn btn-sm btn-warning">Edit</a>

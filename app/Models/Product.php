@@ -18,6 +18,7 @@ class Product extends Model
         'brands',
         'rating',
         'image',
+        'status'
     ];
 
     public function category()

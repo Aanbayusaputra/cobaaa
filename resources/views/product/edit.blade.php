@@ -75,7 +75,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-secondary">Cancel</button>
+                        <a href="{{ route('product.index') }}" class="btn btn-secondary">Cancel</a>
                     </form>
                 </div>
             </div>
