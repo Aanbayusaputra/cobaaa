@@ -37,15 +37,17 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login.aut
 
 Route::middleware('auth')->group(function () {
 
+
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
     //dasboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::middleware('role:Admin')->group(function () {
 
-        // ADMIN
+
+    // ADMIN AND Staff
+    Route::middleware('role:Admin|Staff')->group(function () {
         // Slider
         Route::get('/slider', [SliderController::class, 'index'])->name('slider.index'); // route untuk menampilkan data awal
         Route::get('/slider/create', [SliderController::class, 'create'])->name('slider.create'); // route untuk menampilkan form create
@@ -53,11 +55,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/slider/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit'); // route untuk menampilkan form edit
         Route::put('/slider/{id}', [SliderController::class, 'update'])->name('slider.update'); // route untuk mengupdate data
         Route::delete('/slider/{id}', [SliderController::class, 'destroy'])->name('slider.destroy'); // route untuk menghapus data
-    });
-
-    // STAFF & ADMIN
-    Route::middleware('role:Admin|Staff')->group(function () {
-
         // Brand
         Route::get('/brand', [BrandController::class, 'index'])->name('brand.index'); // route untuk menampilkan data awal
         Route::get('/brand/create', [BrandController::class, 'create'])->name('brand.create'); // route untuk menampilkan form create
@@ -65,16 +62,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/brand', [BrandController::class, 'store'])->name('brand.store'); // route untuk menyimpan data
         Route::put('/brand/{id}', [BrandController::class, 'update'])->name('brand.update'); // route untuk mengupdate data
         Route::delete('/brand/{id}', [BrandController::class, 'destroy'])->name('brand.destroy'); // route untuk menghapus data
-    });
-
-    // STAFF & ADMIN
-
-
-    Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
-
-    Route::middleware('role:Admin|Staff')->group(function () {
 
         //kategori
+        Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
         Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
         Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
         Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');

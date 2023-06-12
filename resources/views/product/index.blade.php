@@ -7,6 +7,19 @@
 
             <a class="btn btn-primary mb-2" href="{{ route('product.create') }}" role="button">Create New</a>
 
+            {{-- Flash session message --}}
+            @if ($message = Session::get('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ $message }}
+                </div>
+            @endif
+
+            @if ($message = Session::get('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ $message }}
+                </div>
+            @endif
+
             <div class="card mb-4">
                 <div class="card-body">
                     <table id="dataTable" class="table table-striped">
@@ -21,6 +34,7 @@
                                 <th>Image</th>
                                 <th>Status</th>
                                 <th>Action</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -29,8 +43,8 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $product->category->name }}</td>
                                     <td>{{ $product->name }}</td>
-                                    <td>Rp. {{ number_format($product->price, 0, 2) }}</td>
-                                    <td>Rp. {{ number_format($product->sale_price, 0, 2) }}</td>
+                                    <td>Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
+                                    <td>Rp. {{ number_format($product->sale_price, 0, ',', '.') }}</td>
                                     <td>{{ $product->brand }}</td>
                                     <td>
                                         @if ($product->image == null)
@@ -46,24 +60,30 @@
                                         @elseif ($product->status == 'rejected')
                                             <span class="badge bg-danger">Rejected</span>
                                         @else
-                                            <form action="{{ route('product.updateStatus', $product->id) }}" method="POST"
-                                                style="display: inline;">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="status" value="approved">
-                                                <button type="submit" class="btn btn-sm btn-success"><i
-                                                        class="fas fa-check"></i></button>
-                                            </form>
-                                            <form action="{{ route('product.updateStatus', $product->id) }}" method="POST"
-                                                style="display: inline;">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="status" value="rejected">
-                                                <button type="submit" class="btn btn-sm btn-danger"><i
-                                                        class="fas fa-times"></i></button>
-                                            </form>
+                                            @if (Auth::user()->role->name == 'Admin')
+                                                {{-- Pengecekan apakah pengguna adalah admin --}}
+                                                <form action="{{ route('product.updateStatus', $product->id) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status" value="approved">
+                                                    <button type="submit" class="btn btn-sm btn-success"><i
+                                                            class="fas fa-check"></i></button>
+                                                </form>
+                                                <form action="{{ route('product.updateStatus', $product->id) }}"
+                                                    method="POST" style="display: inline;">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status" value="rejected">
+                                                    <button type="submit" class="btn btn-sm btn-danger"><i
+                                                            class="fas fa-times"></i></button>
+                                                </form>
+                                            @else
+                                                <span class="badge bg-info">Pending</span>
+                                            @endif
                                         @endif
                                     </td>
+
                                     <td>
                                         <form onsubmit="return confirm('Are you sure?');"
                                             action="{{ route('product.destroy', $product->id) }}" method="POST">
@@ -75,6 +95,7 @@
                                             <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                                         </form>
                                     </td>
+
                                 </tr>
                             @endforeach
                         </tbody>

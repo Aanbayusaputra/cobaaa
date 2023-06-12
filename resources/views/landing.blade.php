@@ -27,7 +27,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item"><a class="nav-link active" aria-current="page"
                             href="{{ route('landing') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
@@ -175,19 +175,38 @@
                     <p>My Store Merupakan Toko Sepatu Terlangkap dari Yang Termurah Dan Termahal dijamin Original</p>
                 </div>
                 <div class="col-6 px-4">
-                    <p><i class="fa-solid fa-location-dot icon mx-3 ms-0"></i>Desa Glonggong, Kecamatan Wanasari,
+                    <p><i class="fa-solid fa-location-dot icon mx-3 ms-0"></i> Kecamatan Wanasari,
                         Brebes,
                         Jawa Tengah</p>
                     <small>Developed by</small>
                     <br>
                     <small>Aan Bayu Saputra</small>
                     <br>
-                    <a class="icon" href="https://web.facebook.com/aanbayu.saputra.96"><i
-                            class="fa fa-facebook"></i></a>
-                    <a class="icon" href="#!"><i class="fa fa-linkedin"></i></a>
-                    <a class="icon" href="#!"><i class="fa fa-github"></i></a>
-                    <a class="icon" href="#!"><i class="fa fa-gitlab"></i></a>
-                    <a class="icon" href="#!"><i class="fa-solid fa-envelope"></i></a>
+                    <div class="col-lg-6 col-md-6 mb-4 mb-lg-0">
+                        <ul class="list-inline mt-4">
+                            <li class="list-inline-item">
+                                <a href="https://www.facebook.com/aanbayu.saputra.96" class="text-white">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-white">
+                                    <i class="bi bi-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.instagram.com/" class="text-white">
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://www.linkedin.com/in/aan-bayu-saputra-57676a261/" class="text-white">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
             <hr>
