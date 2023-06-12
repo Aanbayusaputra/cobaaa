@@ -43,9 +43,9 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $product->category->name }}</td>
                                     <td>{{ $product->name }}</td>
-                                    <td>Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
-                                    <td>Rp. {{ number_format($product->sale_price, 0, ',', '.') }}</td>
-                                    <td>{{ $product->brand }}</td>
+                                    <td>Rp. {{ number_format($product->price, 0, 2) }}</td>
+                                    <td>Rp. {{ number_format($product->sale_price, 0, 2) }}</td>
+                                    <td>{{ $product->brands }}</td>
                                     <td>
                                         @if ($product->image == null)
                                             <span class="badge bg-primary">No Image</span>
