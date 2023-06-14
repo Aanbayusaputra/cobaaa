@@ -26,11 +26,12 @@
                                         <form onsubmit="return confirm('Are you sure? ');"
                                             action="{{ route('category.destroy', $category->id) }}" method="POST">
                                             <a href="{{ route('category.edit', $category->id) }}"
-                                                class="btn btn-sm btn-warning">Edit</a>
+                                                class="btn btn-sm btn-warning"><i class="fas fa-edit"></i>Edit</a>
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-danger"><i
+                                                    class="fas fa-trash"></i>Delete</button>
                                         </form>
                                     </td>
                                 </tr>

@@ -24,11 +24,13 @@
                                     <td>{{ $role->name }}</td>
                                     <td>
                                         <form action="{{ route('role.destroy', $role->id) }}" method="POST" class="d-inline">
-                                            <a href="{{ route('role.edit', $role->id) }}" class="btn btn-warning">Edit</a>
+                                            <a href="{{ route('role.edit', $role->id) }}" class="btn btn-warning"><i
+                                                    class="fas fa-edit"></i>Edit</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger"
-                                                onclick="return confirm('Are you sure?')">Delete</button>
+                                                onclick="return confirm('Are you sure?')"><i
+                                                    class="fas fa-trash"></i>Delete</button>
                                         </form>
                                     </td>
                                 </tr>

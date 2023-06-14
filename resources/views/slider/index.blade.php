@@ -34,10 +34,11 @@
                                         <form onsubmit="return confirm('Are you sure? ');"
                                             action="{{ route('slider.destroy', $slider->id) }}" method="POST">
                                             <a href="{{ route('slider.edit', $slider->id) }}"
-                                                class="btn btn-sm btn-warning">Edit</a>
+                                                class="btn btn-sm btn-warning"><i class="fas fa-edit"></i>Edit</a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-danger"><i
+                                                    class="fas fa-trash-alt">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

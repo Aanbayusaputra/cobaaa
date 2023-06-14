@@ -88,11 +88,13 @@
                                         <form onsubmit="return confirm('Are you sure?');"
                                             action="{{ route('product.destroy', $product->id) }}" method="POST">
                                             <a href="{{ route('product.edit', $product->id) }}"
-                                                class="btn btn-sm btn-warning">Edit</a>
+                                                class="btn btn-sm btn-warning"><i class="fas fa-edit"></i>Edit</a>
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-danger"><i
+                                                    class="fas fa-trash-alt"></i> Delete</button>
+
                                         </form>
                                     </td>
 
