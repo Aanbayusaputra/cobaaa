@@ -155,12 +155,15 @@
                                 </div>
                                 <!-- Product actions-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <a class="btn btn-outline-light mt-auto bg-success"
-                                        href="https://api.whatsapp.com/send?phone=123456789&text=Halo%2C%20saya%20tertarik%20untuk%20membeli%20produk%20{{ urlencode($product->name) }}">
-                                        <i class="bi bi-whatsapp"></i>Pesan Sekarang
-                                    </a>
+                                    <div class="text-center">
+                                        <a class="btn btn-outline-light mt-auto bg-success"
+                                            href="https://api.whatsapp.com/send?phone=123456789&text=Halo%2C%20saya%20tertarik%20untuk%20membeli%20produk%20{{ urlencode($product->name) }}">
+                                            <i class="bi bi-whatsapp"></i>Pesan Sekarang
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
                     @endif
                 @endforeach
             </div>
