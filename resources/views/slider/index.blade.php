@@ -38,7 +38,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger"><i
-                                                    class="fas fa-trash-alt">Delete</button>
+                                                    class="fas fa-trash-alt"></i>Hapus</button>
                                         </form>
                                     </td>
                                 </tr>
