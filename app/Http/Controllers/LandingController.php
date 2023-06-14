@@ -14,8 +14,8 @@ class LandingController extends Controller
         // mengambil data category
         $categories = Category::all();
 
-        // mengambil 8 data produk secara acak
-        $products = Product::inRandomOrder(8)->get();
+
+
 
 
         // mengambil data slider
@@ -28,8 +28,8 @@ class LandingController extends Controller
         } else if ($request->min && $request->max) {
             $products = Product::where('price', '>=', $request->min)->where('price', '<=', $request->max)->get();
         } else {
-            // mengambil 8 data produk secara acak
-            $products = Product::inRandomOrder()->limit(8)->get();
+            // mengambil  data yang sudah di Approved
+            $products = Product::where('status', 'Approved')->get();
         }
 
         return view('landing', compact('products', 'categories', 'sliders'));

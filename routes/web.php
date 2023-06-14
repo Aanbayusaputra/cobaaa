@@ -34,6 +34,10 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
 
+//show produk
+Route::get('/product/show/{id}', [ProductController::class, 'show'])->name('product.show');
+
+
 
 Route::middleware('auth')->group(function () {
 
