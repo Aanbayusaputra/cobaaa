@@ -11,22 +11,27 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Fontawesome icons-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="{{ asset('css/landing.css') }}" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="{{ route('landing') }}">My Store</a>
+            <a class="navbar-brand" href="{{ route('landing') }}"><span>My</span><span
+                    class="text-warning">Store</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page"
-                            href="{{ route('landing') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ route('landing') }}"><i
+                                class="fas fa-home"></i>Home</a></li>
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
@@ -51,7 +56,7 @@
 
                     @guest
                         <a href="{{ route('login') }}" class="btn btn-outline-light ms-1">
-                            <i class="bi-person-fill me-1"></i>
+                            <i class="fas fa-sign-in-alt"></i>
                             Login
                         </a>
                     @endguest
@@ -189,22 +194,27 @@
                         <ul class="list-inline mt-4">
                             <li class="list-inline-item">
                                 <a href="https://www.facebook.com/aanbayu.saputra.96" class="text-white">
-                                    <i class="bi bi-facebook"></i>
+                                    <i class="fab fa-facebook-square"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#" class="text-white">
-                                    <i class="bi bi-twitter"></i>
+                                <a href="https://twitter.com/" class="text-white">
+                                    <i class="fab fa-twitter-square"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="https://www.instagram.com/" class="text-white">
-                                    <i class="bi bi-instagram"></i>
+                                <a href="https://www.instagram.com/anbayusptr/" class="text-white">
+                                    <i class="fab fa-instagram"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
                                 <a href="https://www.linkedin.com/in/aan-bayu-saputra-57676a261/" class="text-white">
-                                    <i class="bi bi-linkedin"></i>
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="https://github.com/Aanbayusaputra/sib-fswd-laravel" class="text-white">
+                                    <i class="fab fa-github"></i>
                                 </a>
                             </li>
                         </ul>

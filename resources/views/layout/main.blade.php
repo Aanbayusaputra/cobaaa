@@ -9,9 +9,6 @@
     <meta name="author" content="" />
     <title>Dashboard - Tokoku</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-xL3MvOhtZ7AjxSa4V+cDEQ4UrYujCQ3nk0XKmXu+5M2bwys81NL4E8hNSJW//Hq2zY+oW2dovB2Hke/f8xP8Yg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
