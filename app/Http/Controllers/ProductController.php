@@ -74,7 +74,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'sale_price' => $request->sale_price,
-            'brand' => $request->brand,
+            'brands' => $request->brand,
             'image' => $imageName,
             'status' => 'pending' // status awal adalah pending
         ]);
