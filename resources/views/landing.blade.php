@@ -217,6 +217,11 @@
                                     <i class="fab fa-github"></i>
                                 </a>
                             </li>
+                            <li class="list-inline-item">
+                                <a href="https://mail.google.com" class="text-white">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
