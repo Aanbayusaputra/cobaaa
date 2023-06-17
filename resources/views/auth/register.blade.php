@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register</title>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <style>
         body {
             background: #007bff;
@@ -45,6 +46,7 @@
                 <div class="card border-0 shadow rounded-3 mb-5 mt-2">
                     <div class="card-body p-4 p-sm-5">
                         <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
+                        <a href="{{ route('landing') }}"><i class="fas fa-long-arrow-left"></i>Back</a>
                         <form action="{{ route('register.store') }}" method="POST">
                             @csrf
                             <div class="form-floating mb-3">
