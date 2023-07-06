@@ -99,9 +99,26 @@
                                     </td>
 
                                 </tr>
+                                @php
+                                    $categoryName = $product->category->name;
+                                    if (!isset($categoryCounts[$categoryName])) {
+                                        $categoryCounts[$categoryName] = 0;
+                                    }
+                                    $categoryCounts[$categoryName]++;
+                                @endphp
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3>Jumlah Produk berdasarkan Kategori :</h3>
+                    <ul>
+                        @foreach ($categoryCounts as $categoryName => $count)
+                            <li>{{ $categoryName }}: {{ $count }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
